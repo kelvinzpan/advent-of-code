@@ -41,7 +41,7 @@ loop:
     for (let i = 15; i < 127; i++) { // This is the end of the empty front seats
         for (let j = 0; j < 8; j++) {
             if (seats[i][j] == "x") {
-                print(seats);
+                //print(seats);
                 print((i * 8 + j));
                 break loop;
             }
