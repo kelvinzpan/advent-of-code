@@ -47,6 +47,7 @@ lineReader.on('line', function (line) {
 });
 
 lineReader.on('close', function () {
+    // Have process the last input
     count = count + set.size;
     //
     for (let key in map) {
