@@ -63,29 +63,17 @@ lineReader.on('close', function () {
     print(res.size);
 
     print("\nDay 7-2");
-    list = map2["shiny gold"];
-    count = 0;
+    print(recursiveCount("shiny gold"))
+});
 
-    while (true) {
-        let newList = [];
-        list.forEach(bag => {
-            count = count + bag.num;
-            
-            if (bag.name in map2) {
-                map2[bag.name].forEach(nextBag => {
-                    let newBag = nextBag;
-                    newBag.num = newBag.num * bag.num;
-                    newList.push(newBag);
-                })
-            }
-        });
-
-        if (newList.length == 0) {
-            break;
-        }
-        
-        list = newList;
+function recursiveCount(bagName) {
+    if (!(bagName in map2)) {
+        return 0;
     }
 
-    print(count);
-});
+    let count = 0;
+    map2[bagName].forEach(childBag => {
+        count = count + childBag.num + childBag.num*recursiveCount(childBag.name);
+    })
+    return count;
+}
