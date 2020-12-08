@@ -72,8 +72,10 @@ lineReader.on('close', function () {
             count = count + bag.num;
             
             if (bag.name in map2) {
-                map2[bag.name].forEach(nextBag => {
-                    let newBag = nextBag;
+                map2[bag.name].forEach(childBag => {
+                    let newBag = {
+                        ...childBag
+                    };
                     newBag.num = newBag.num * bag.num;
                     newList.push(newBag);
                 })
