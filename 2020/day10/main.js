@@ -30,37 +30,35 @@ lineReader.on('close', function () {
 
     print("\nDay 10-2");
     input = [0, ...input, input[input.length-1] + 3];
-    let map = {};
-    let revMap = {};
-    input.forEach(num => revMap[num.toString()] = []);
+    let reverseGraph = {};
+    input.forEach(num => reverseGraph[num.toString()] = []);
     for (let i = 0; i < input.length; i++) {
         let num = input[i];
-        map[num.toString()] = [];
 
         for (let j = i + 1; j < input.length && j < i + 4; j++) {
             if (input[j] - input[i] <= 3) {
-                map[num.toString()].push(input[j].toString());
-                revMap[input[j].toString()].push(num.toString());
+                reverseGraph[input[j].toString()].push(num.toString());
             }
         }
     }
-    
+
+    let numPaths = {};
+    input.forEach(num => numPaths[num.toString()] = 0);
+    numPaths[input[input.length - 1].toString()] = 1;
+    for (let i = input.length - 1; i > 0; i--) {
+        // Since our graph edges are reversed, higherNum --> lowerNum
+        let higherNum = input[i];
+
+        reverseGraph[higherNum.toString()].forEach(lowerNum => {
+            numPaths[lowerNum.toString()] += numPaths[higherNum.toString()];
+        })
+    }
+    print(numPaths[input[0].toString()]);
+
     // let count = [];
     // count.push(0);
     // recursiveCount(input[0], map, count);
     // print(count[0]);
-
-    let dp = {};
-    input.forEach(num => dp[num.toString()] = 0);
-    dp[input[input.length - 1].toString()] = 1;
-    for (let i = input.length - 1; i > 0; i--) {
-        let lowerNum = input[i];
-
-        revMap[lowerNum.toString()].forEach(upperNum => {
-            dp[upperNum.toString()] += dp[lowerNum.toString()];
-        })
-    }
-    print(dp[input[0].toString()]);
 });
 
 // function recursiveCount(num, map, count) {
