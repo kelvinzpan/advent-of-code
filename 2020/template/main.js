@@ -21,6 +21,8 @@ lineReader.on('close', function () {
 
 ///////////////////////////////////////////////////////////////////////////////
 
+// Convenience functions 
+
 function copy2DArray(array) {
     let newArray = [];
 
