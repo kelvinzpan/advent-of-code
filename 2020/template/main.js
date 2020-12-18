@@ -6,10 +6,12 @@ var lineReader = require('readline').createInterface({
 
 let input = [];
 
+// Set up input
 lineReader.on('line', function (line) {
 
 });
 
+// Input read
 lineReader.on('close', function () {
 
     print("Day -1");
