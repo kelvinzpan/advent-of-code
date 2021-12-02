@@ -1,0 +1,4 @@
+﻿  day2.cpp
+C:\Users\Kelvin\Documents\GitHub\advent-of-code\2021\day2\day2.cpp(27,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Kelvin\Documents\GitHub\advent-of-code\2021\day2\day2.cpp(50,23): warning C4018: '<': signed/unsigned mismatch
+  day2.vcxproj -> C:\Users\Kelvin\Documents\GitHub\advent-of-code\2021\Debug\day2.exe
